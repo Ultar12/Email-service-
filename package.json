@@ -1,0 +1,14 @@
+{
+  "name": "ultar-email-service",
+  "version": "1.0.0",
+  "description": "Sends emails for the Ultar WBD bot.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.7",
+    "dotenv": "^16.3.1"
+  }
+}
