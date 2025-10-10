@@ -71,6 +71,24 @@ app.post('/send-email', apiKeyAuth, async (req, res) => {
         break;
 
       // Add other email types like 'payment_confirmation' here if needed.
+        // ❗️ ADD THIS NEW CASE ❗️
+      case 'payment_confirmation':
+        subject = Payment Confirmed: Your Bot Deployment;
+        mailOptions = {
+            from: "ULTAR'S WBD" <${GMAIL_USER}>,
+            to: payload.toEmail,
+            subject: subject,
+            html: 
+              <div style="font-family: sans-serif; text-align: center;">
+                <h1>Payment Received!</h1>
+                <p>Thank you, ${payload.userName || 'User'}. We've received your payment and your bot deployment for <strong>${payload.appName}</strong> has started.</p>
+                <p><strong>Reference:</strong> ${payload.referenceId}</p>
+                <p>You'll get a message in Telegram once it's ready.</p>
+              </div>
+             // Using a slightly simplified version of your HTML for reliability.
+        };
+        break;
+      
       default:
         return res.status(400).json({ success: false, message: 'Invalid email type specified.' });
     }
