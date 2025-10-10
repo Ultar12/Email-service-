@@ -98,11 +98,11 @@ app.post('/send-email', apiKeyAuth, async (req, res) => {
             html: `
               <div style="background-color: #000; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #fff; text-align: center; border-radius: 10px;">
                 <h1 style="font-size: 24px; font-weight: bold; margin-top: 20px;">Payment Received!</h1>
-                <p>Thank you, ${payload.userName || 'User'}. We've received your payment and your bot deployment for <strong>${payload.appName}</strong> has started.</p>
+                <p>Thank you, ${payload.userName || 'User'}. We've received your payment and your bot deployment has started.</p>
                 <div style="background-color: #121212; border-radius: 8px; padding: 15px; margin: 20px 0; text-align: left;">
                   <h2 style="font-size: 18px; color: #fff; margin-top: 0; text-align: center;">Transaction Details</h2>
                   <p style="color: #ccc; font-size: 14px;"><strong>Reference:</strong> ${payload.referenceId}</p>
-                  <p style="color: #ccc; font-size: 14px;"><strong>Bot Name:</strong> ${payload.appName}</p>
+                  
                 </div>
                 <a href="https://t.me/ultarbotdeploybot" style="display: inline-block; padding: 12px 24px; margin-top: 20px; background-color: #69F0AE; color: #121212; text-decoration: none; border-radius: 50px; font-weight: bold;">GO TO YOUR BOT</a>
                 <p style="font-size: 14px; margin-top: 20px;">Sincerely,<br><strong>ULTAR'S WBD</strong></p>
