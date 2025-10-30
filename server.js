@@ -89,6 +89,32 @@ app.post('/send-email', apiKeyAuth, async (req, res) => {
         };
         break;
 
+      // --- 💡 NEW CASE ADDED HERE 💡 ---
+      case 'expiration_reminder':
+        subject = `Action Required: Your Bot "${payload.appName}" is Expiring Soon`;
+        mailOptions = {
+            from: `"ULTAR'S WBD" <${GMAIL_USER}>`,
+            to: payload.toEmail,
+            subject: subject,
+            html: `
+              <div style="background-color: #000; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #fff; text-align: center; border-radius: 10px;">
+                <h1 style="font-size: 24px; font-weight: bold; color: #ff9500;">Your Bot is About To Expire!</h1>
+                <p style="font-size: 17px;">This is a reminder that your bot, <strong>${payload.appName}</strong>, is scheduled to expire in <strong>${payload.daysLeft} day(s)</strong>.</p>
+                
+                <div style="background-color: #4d2f00; border: 1px solid #ff9500; border-radius: 8px; padding: 15px; margin: 20px auto; max-width: 90%;">
+                  <h2 style="font-size: 18px; color: #ff9500; margin-top: 0;">Renew Now</h2>
+                  <p style="font-size: 16px; margin: 0;">If the service expires, your bot will be automatically deleted. Please renew it to prevent any interruption in service.</p>
+                </div>
+                
+                <a href="https://t.me/${payload.botUsername}" style="display: inline-block; padding: 12px 24px; margin-top: 10px; background-color: #007aff; color: #fff; text-decoration: none; border-radius: 50px; font-weight: bold;">RENEW BOT NOW</a>
+                
+                <p style="font-size: 14px; margin-top: 20px;">Sincerely,<br><strong>ULTAR'S WBD</strong></p>
+              </div>
+            `
+        };
+        break;
+      // --- END OF NEW CASE ---
+        
       case 'payment_confirmation':
         subject = `Payment Confirmed: Your Bot Deployment`;
         mailOptions = {
